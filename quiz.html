@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quiz</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div
+            style="
+                text-align: right;
+                max-width: 1400px;
+                width: 95%;
+                margin: 0 auto;
+                padding-bottom: 10px;
+            "
+        >
+            <button id="theme-btn" class="theme-toggle">🌙 Dark Mode</button>
+        </div>
+
+        <div class="main-container">
+            <div class="top-bar">
+                <button
+                    class="back-btn small-btn"
+                    onclick="window.location.href = 'index.html'"
+                >
+                    Back
+                </button>
+                <h1 id="quiz-title">Quiz</h1>
+                <h2
+                    id="timer-display"
+                    style="display: none; color: #dc3545"
+                ></h2>
+            </div>
+
+            <div class="quiz-layout" id="quiz-layout-wrapper">
+                <div class="question-area">
+                    <div id="question-wrapper"></div>
+                    <div
+                        id="navigation-controls"
+                        style="display: none; gap: 10px; margin-top: 15px"
+                    >
+                        <button
+                            id="prev-btn"
+                            class="nav-btn"
+                            onclick="navigatePrevious()"
+                        >
+                            Previous
+                        </button>
+                        <button
+                            id="next-btn"
+                            class="nav-btn"
+                            onclick="navigateNext()"
+                        >
+                            Next
+                        </button>
+                    </div>
+                    <button
+                        id="submit-all-btn"
+                        style="display: none"
+                        class="submit-btn"
+                        onclick="submitQuiz()"
+                    >
+                        Submit Quiz
+                    </button>
+                </div>
+
+                <div
+                    class="palette-area"
+                    id="palette-area-wrapper"
+                    style="display: none"
+                >
+                    <h3 style="margin-top: 0; text-align: center">
+                        Question Palette
+                    </h3>
+                    <div class="legend">
+                        <span class="legend-box attempted"></span> Attempted
+                        <span
+                            class="legend-box unattempted"
+                            style="margin-left: 10px"
+                        ></span>
+                        Unattempted
+                    </div>
+                    <div id="palette-grid-container" class="palette-grid"></div>
+                    <button
+                        id="submit-mock-btn"
+                        class="submit-btn"
+                        onclick="submitQuiz()"
+                    >
+                        Submit Test
+                    </button>
+                </div>
+            </div>
+
+            <div id="results-box" style="display: none"></div>
+        </div>
+
+        <script src="questions.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
