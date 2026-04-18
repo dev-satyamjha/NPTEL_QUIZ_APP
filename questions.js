@@ -13,7 +13,7 @@ const quizData = {
       },
       {
         question:
-          "The property of society getting the most it can from its scarce resources is a definition of",
+          "The property of society getting the most it can from from its scarce resources is a definition of",
         options: ["efficiency", "equality", "prudence", "sustainability"],
         answer: 0,
       },
@@ -1229,7 +1229,96 @@ const quizData = {
     ],
   },
   WildLifeEcology: {
-    "Week 0": [],
+    "Week 0": [
+      {
+        question: "Transplantation experiments are used to find",
+        options: [
+          "potential range",
+          "effective range",
+          "actual range",
+          "economic range",
+        ],
+        answer: 0,
+      },
+      {
+        question: "Which of these is not a characteristic of fitness?",
+        options: [
+          "Fitness is environment-specific.",
+          "Fitness is species-specific.",
+          "Higher reproductive rate means higher fitness.",
+          "Fitness should be measured across several generations.",
+        ],
+        answer: 2,
+      },
+      {
+        question: "The hierarchical system was given by",
+        options: ["Simon", "Watson", "Hutchinson", "Humboldt"],
+        answer: 0,
+      },
+      {
+        question: "Hamilton's rule can be stated as",
+        options: ["rB < C", "rB > C", "rB = C", "rB + C = 0"],
+        answer: 1,
+      },
+      {
+        question:
+          "As we move up the food chain (Grass → Grasshopper → Frog → Snake → Hawk),",
+        options: [
+          "available energy decreases",
+          "available energy increases",
+          "available energy remains same",
+          "available energy is zero everywhere",
+        ],
+        answer: 0,
+      },
+      {
+        question: "The logistic growth equation, when plotted, appears",
+        options: ["I shaped", "J shaped", "S shaped", "O shaped"],
+        answer: 2,
+      },
+      {
+        question:
+          "The climax near Tindi village being controlled by cattle disturbance is an example of",
+        options: [
+          "climatic climax",
+          "edaphic climax",
+          "disclimax",
+          "catastrophic climax",
+        ],
+        answer: 2,
+      },
+      {
+        question:
+          "“Quick movement over large distances, often across unsuitable terrain” is a description of",
+        options: [
+          "diffusion",
+          "secular dispersal",
+          "jump dispersal",
+          "drifting",
+        ],
+        answer: 2,
+      },
+      {
+        question: "Captive breeding is an example of",
+        options: [
+          "in-situ conservation",
+          "ex-situ conservation",
+          "in-situ preservation",
+          "ex-situ preservation",
+        ],
+        answer: 1,
+      },
+      {
+        question: "The demographic transition sees a society move from",
+        options: [
+          "high birth rate, low death rate to low birth rate, low death rate",
+          "high birth rate, high death rate to low birth rate, low death rate",
+          "high birth rate, high death rate to low birth rate, high death rate",
+          "low birth rate, high death rate to low birth rate, low death rate",
+        ],
+        answer: 1,
+      },
+    ],
     "Week 1": [
       {
         question: "Which of these is not a characteristic of fitness?",
@@ -2259,7 +2348,85 @@ const quizData = {
     ],
   },
   "Forests and their Management": {
-    "Week 0": [],
+    "Week 0": [
+      {
+        question: "Montane sub-tropical forests do not include",
+        options: [
+          "broadleaved forests",
+          "pine forests",
+          "semi-evergreen forests",
+          "dry evergreen forests",
+        ],
+        answer: 2,
+      },
+      {
+        question: "Which of these is not a non-use value?",
+        options: [
+          "direct value",
+          "existence value",
+          "altruistic value",
+          "bequest value",
+        ],
+        answer: 0,
+      },
+      {
+        question: "The art and science of cultivating forest crops is called",
+        options: ["foresticulture", "monoculture", "silviculture", "silvics"],
+        answer: 2,
+      },
+      {
+        question: "Which of these is abiotic factor?",
+        options: ["vines", "trees", "reptiles", "water"],
+        answer: 3,
+      },
+      {
+        question:
+          "The term laterite soil is derived from Latin later which means",
+        options: ["red", "brick", "fertile", "infertile"],
+        answer: 1,
+      },
+      {
+        question: "Self ploughing character is seen in",
+        options: [
+          "black cotton soil",
+          "alluvial soil",
+          "saline soil",
+          "red and yellow soil",
+        ],
+        answer: 0,
+      },
+      {
+        question: "Vertical arrangement of soil horizons is called",
+        options: [
+          "soil texture",
+          "soil structure",
+          "soil profile",
+          "soil science",
+        ],
+        answer: 2,
+      },
+      {
+        question: "Which of these has the highest organic matter content?",
+        options: [
+          "peaty soil",
+          "alluvial soil",
+          "saline soil",
+          "red and yellow soil",
+        ],
+        answer: 0,
+      },
+      {
+        question:
+          "In a triangle, θ = 60° and hypotenuse = 4 cm. Find the base.",
+        options: ["0.66", "1", "1.5", "2"],
+        answer: 3,
+      },
+      {
+        question: "The breast height for Japan and Korea is",
+        options: ["1.1 m", "1.2 m", "1.3 m", "1.4 m"],
+        answer: 1,
+      },
+    ],
     "Week 1": [
       {
         question: "Which of these is not a consumptive value?",
