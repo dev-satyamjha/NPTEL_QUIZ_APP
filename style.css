@@ -54,6 +54,16 @@ body {
     transition: 0.3s;
 }
 
+.inner-container {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    background: var(--background-body);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
 h1,
 h2 {
     text-align: center;
@@ -77,6 +87,34 @@ h2 {
     border: 1px solid var(--button-border);
     background: var(--button-background);
     color: var(--text-main);
+}
+
+.master-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.course-btn {
+    padding: 25px 20px;
+    background: var(--button-background);
+    color: var(--text-main);
+    border: 1px solid var(--button-border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.2s;
+    box-sizing: border-box;
+}
+
+.course-btn:hover {
+    background: var(--button-hover);
+}
+
+.course-btn:nth-child(1) {
+    grid-column: 1 / -1;
 }
 
 .dashboard-grid {
@@ -160,27 +198,6 @@ h2 {
     border-radius: 8px;
     border: 1px solid var(--border-color);
     box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-    .main-container {
-        padding: 15px;
-    }
-    .quiz-layout {
-        flex-direction: column;
-    }
-    .palette-area {
-        width: 100%;
-        align-self: stretch;
-    }
-    .top-bar {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .module-btn {
-        padding: 10px 5px;
-        font-size: 0.9em;
-    }
 }
 
 .palette-grid {
@@ -346,4 +363,35 @@ h2 {
 
 .submit-btn:hover {
     background: #218838;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 15px;
+    }
+    .inner-container {
+        padding: 20px;
+        margin-top: 20px;
+    }
+    .quiz-layout {
+        flex-direction: column;
+    }
+    .palette-area {
+        width: 100%;
+        align-self: stretch;
+    }
+    .top-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .module-btn {
+        padding: 10px 5px;
+        font-size: 0.9em;
+    }
+    .master-grid {
+        grid-template-columns: 1fr;
+    }
+    .course-btn:nth-child(1) {
+        grid-column: auto;
+    }
 }

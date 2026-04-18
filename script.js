@@ -1,10 +1,13 @@
 const urlParams = new URLSearchParams(window.location.search);
 const quizMode = urlParams.get("m");
+const courseName = urlParams.get("c");
+
 const questionWrapper = document.getElementById("question-wrapper");
 const resultsBox = document.getElementById("results-box");
 const quizTitle = document.getElementById("quiz-title");
 const timerDisplay = document.getElementById("timer-display");
 const themeToggleBtn = document.getElementById("theme-btn");
+const layoutWrapper = document.getElementById("quiz-layout-wrapper");
 
 let currentQuestionList = [];
 let currentQuestionIndex = 0;
@@ -13,51 +16,92 @@ let score = 0;
 let timerInterval;
 let startTime = Date.now();
 
+window.goBackToDashboard = function () {
+  if (courseName) {
+    window.location.href = `dashboard.html?c=${encodeURIComponent(courseName)}`;
+  } else {
+    window.location.href = "index.html";
+  }
+};
+
 if (themeToggleBtn) {
   if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark-mode");
     themeToggleBtn.innerText = "☀️ Light Mode";
   }
-
   themeToggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
     const isDarkMode = document.body.classList.contains("dark-mode");
-
     themeToggleBtn.innerText = isDarkMode ? "☀️ Light Mode" : "🌑 Dark Mode";
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
   });
 }
 
+function prepareAndShuffleQuestions(sourceQuestions) {
+  if (!sourceQuestions || sourceQuestions.length === 0) return [];
+
+  return sourceQuestions.map((question) => {
+    let clonedQuestion = { ...question, options: [...question.options] };
+    let correctAnswerText = clonedQuestion.options[clonedQuestion.answer];
+
+    for (let i = clonedQuestion.options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [clonedQuestion.options[i], clonedQuestion.options[j]] = [
+        clonedQuestion.options[j],
+        clonedQuestion.options[i],
+      ];
+    }
+
+    clonedQuestion.answer = clonedQuestion.options.indexOf(correctAnswerText);
+    return clonedQuestion;
+  });
+}
+
 function startQuiz() {
-  if (!quizMode) return;
-  quizTitle.innerText =
+  if (!quizMode || !courseName || !quizData[courseName]) {
+    questionWrapper.innerHTML =
+      "<h2 style='text-align:center;'>Error: Course or Quiz Mode not found.</h2>";
+    return;
+  }
+
+  let modeText =
     quizMode === "m" ? "Mock Exam" : quizMode === "a" ? "All Weeks" : quizMode;
+  quizTitle.innerText = `${courseName} - ${modeText}`;
+
+  let rawQuestions = [];
+
+  if (quizMode === "m" || quizMode === "a") {
+    let courseData = quizData[courseName];
+    for (let week in courseData) {
+      rawQuestions = rawQuestions.concat(courseData[week]);
+    }
+
+    if (quizMode === "m") {
+      rawQuestions.sort(() => Math.random() - 0.5);
+      rawQuestions = rawQuestions.slice(0, 50);
+    }
+  } else {
+    rawQuestions = quizData[courseName][quizMode] || [];
+  }
+
+  currentQuestionList = prepareAndShuffleQuestions(rawQuestions);
+  userAnswers = new Array(currentQuestionList.length).fill(-1);
+
+  if (currentQuestionList.length === 0) {
+    questionWrapper.innerHTML =
+      "<br><h2 style='text-align:center; color:#6c757d;'>No questions available for this section yet!</h2>";
+    return;
+  }
 
   if (quizMode === "m") {
-    let allQuestions = [];
-    for (let week in quizData) {
-      allQuestions = allQuestions.concat(quizData[week]);
-    }
-    allQuestions.sort(() => Math.random() - 0.5);
-    currentQuestionList = allQuestions.slice(0, 50);
-
     document.getElementById("palette-area-wrapper").style.display = "block";
     document.getElementById("navigation-controls").style.display = "flex";
     timerDisplay.style.display = "block";
 
     timerInterval = setInterval(updateTimer, 1000);
-    userAnswers = new Array(currentQuestionList.length).fill(-1);
     buildPalette();
     renderMockQuestion();
   } else {
-    if (quizMode === "a") {
-      for (let week in quizData) {
-        currentQuestionList = currentQuestionList.concat(quizData[week]);
-      }
-    } else {
-      currentQuestionList = quizData[quizMode];
-    }
-    userAnswers = new Array(currentQuestionList.length).fill(-1);
     renderAllQuestions();
   }
 }
@@ -205,7 +249,7 @@ function submitQuiz() {
   let accuracy = ((score / currentQuestionList.length) * 100).toFixed(2);
 
   document.getElementById("quiz-layout-wrapper").style.display = "none";
-  timerDisplay.style.display = "none";
+  if (timerDisplay) timerDisplay.style.display = "none";
 
   resultsBox.style.display = "block";
   resultsBox.innerHTML = `<h2 style="font-size:2em; margin-bottom:10px;">Score: ${score} / ${currentQuestionList.length}</h2>`;

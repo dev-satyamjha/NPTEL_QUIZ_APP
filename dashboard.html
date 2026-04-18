@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Course Dashboard</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div
+            style="
+                text-align: right;
+                max-width: 1400px;
+                width: 95%;
+                margin: 0 auto;
+                padding-bottom: 10px;
+            "
+        >
+            <button id="theme-btn" class="theme-toggle">🌑 Dark Mode</button>
+        </div>
+
+        <div class="main-container">
+            <div class="top-bar">
+                <button
+                    class="back-btn small-btn"
+                    onclick="window.location.href = 'index.html'"
+                >
+                    Home
+                </button>
+                <h1
+                    id="course-title"
+                    style="margin: 0; flex: 1; text-align: center"
+                >
+                    Course Dashboard
+                </h1>
+                <div style="width: 80px"></div>
+            </div>
+
+            <div class="dashboard-grid">
+                <button
+                    id="week-0-btn"
+                    class="module-btn"
+                    onclick="navigateToQuiz('Week 0')"
+                >
+                    Week 0
+                </button>
+                <button
+                    id="week-1-btn"
+                    class="module-btn"
+                    onclick="navigateToQuiz('Week 1')"
+                >
+                    Week 1
+                </button>
+                <button class="module-btn" onclick="navigateToQuiz('Week 2')">
+                    Week 2
+                </button>
+                <button class="module-btn" onclick="navigateToQuiz('Week 3')">
+                    Week 3
+                </button>
+                <button class="module-btn" onclick="navigateToQuiz('Week 4')">
+                    Week 4
+                </button>
+                <button class="module-btn" onclick="navigateToQuiz('Week 5')">
+                    Week 5
+                </button>
+                <button class="module-btn" onclick="navigateToQuiz('Week 6')">
+                    Week 6
+                </button>
+                <button class="module-btn" onclick="navigateToQuiz('Week 7')">
+                    Week 7
+                </button>
+                <button class="module-btn" onclick="navigateToQuiz('Week 8')">
+                    Week 8
+                </button>
+                <button class="module-btn" onclick="navigateToQuiz('Week 9')">
+                    Week 9
+                </button>
+                <button class="module-btn" onclick="navigateToQuiz('Week 10')">
+                    Week 10
+                </button>
+                <button class="module-btn" onclick="navigateToQuiz('Week 11')">
+                    Week 11
+                </button>
+                <button class="module-btn" onclick="navigateToQuiz('Week 12')">
+                    Week 12
+                </button>
+            </div>
+
+            <div>
+                <button class="all-weeks-btn" onclick="navigateToQuiz('a')">
+                    All Weeks Quiz
+                </button>
+                <button class="mock-test-btn" onclick="navigateToQuiz('m')">
+                    Mock Test (50 Questions, 3 Hrs)
+                </button>
+            </div>
+        </div>
+
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseName = urlParams.get("c");
+
+            if (courseName) {
+                document.getElementById("course-title").innerText =
+                    courseName + " Quiz";
+                document.title = courseName;
+            }
+
+            const themeToggleBtn = document.getElementById("theme-btn");
+
+            if (localStorage.getItem("theme") === "dark") {
+                document.body.classList.add("dark-mode");
+                themeToggleBtn.innerText = "☀️ Light Mode";
+            }
+
+            themeToggleBtn.addEventListener("click", () => {
+                document.body.classList.toggle("dark-mode");
+                const isDarkMode =
+                    document.body.classList.contains("dark-mode");
+                themeToggleBtn.innerText = isDarkMode
+                    ? "☀️ Light Mode"
+                    : "🌑 Dark Mode";
+                localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+            });
+
+            function navigateToQuiz(mode) {
+                if (courseName) {
+                    window.location.href = `quiz.html?c=${encodeURIComponent(courseName)}&m=${mode}`;
+                } else {
+                    window.location.href = `quiz.html?m=${mode}`;
+                }
+            }
+        </script>
+    </body>
+</html>
