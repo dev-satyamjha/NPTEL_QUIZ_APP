@@ -28,14 +28,14 @@ This project is built purely with frontend technologies, ensuring lightning-fast
 
 * **HTML5:** Semantic structuring and accessible layout design.
 * **CSS3:** Custom properties (variables) for theme management, Flexbox & Grid for advanced alignments, and media queries for mobile responsiveness.
-* **JavaScript (ES6+):** * Dynamic DOM manipulation and event handling.
+* **JavaScript (ES6+):** Dynamic DOM manipulation and event handling.
     * State management for user scores, timer, and question tracking.
 
 ---
 
 ### Snapshots of the Web-Application
 
-| Screenshot 1 | Screenshot 2 |
+| Column 1 | Column 2 |
 | :---: | :---: |
 | <img src="Assets/Playground_L.jpg" width="400" alt="Screenshot 1"> | <img src="Assets/Playground_D.jpg" width="400" alt="Screenshot 2"> |
 | <img src="Assets/Dashboard.jpg" width="400" alt="Screenshot 3"> | <img src="Assets/Week.jpg" width="400" alt="Screenshot 4"> |
