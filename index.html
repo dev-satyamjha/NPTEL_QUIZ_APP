@@ -30,18 +30,25 @@
             .master-grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 80px;
-                margin-top: 120px;
+                gap: 50px;
+                margin-top: 60px;
             }
 
             .master-grid .course-btn:nth-child(1):hover {
                 background-color: #d48b06;
+                color: #ffffff;
             }
             .master-grid .course-btn:nth-child(2):hover {
-                background-color: #2d80fd;
+                background-color: #10b981;
+                color: #ffffff;
             }
             .master-grid .course-btn:nth-child(3):hover {
+                background-color: #2d80fd;
+                color: #ffffff;
+            }
+            .master-grid .course-btn:nth-child(4):hover {
                 background-color: #8a2be2;
+                color: #ffffff;
             }
 
             .course-btn {
@@ -63,7 +70,7 @@
             }
 
             .course-btn:nth-child(1) {
-                grid-column: 1 / -1;
+                grid-column: auto;
             }
 
             @media (max-width: 768px) {
@@ -141,6 +148,13 @@
                         onclick="navigateToDashboard('Conservation Economics')"
                     >
                         Conservation Economics
+                    </button>
+                    <button
+                        id="conserv-geography-btn"
+                        class="course-btn"
+                        onclick="navigateToDashboard('Conservation Geography')"
+                    >
+                        Conservation Geography
                     </button>
                     <button
                         class="course-btn"
